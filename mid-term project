@@ -1,0 +1,66 @@
+with open(r'C:\report.txt', 'r+', encoding = 'utf-8') as f:
+    f1 = f.readlines()
+    list_allline = []
+    for i in f1:
+        data = i.split()
+        list_allline.append(data)
+    listscr = list_allline[1:]
+
+#总成绩和平均分,按总成绩排名
+    per_score = 0
+    for line in listscr:
+        per_score = 0
+        for j in line[1:]:
+            point = int(j)
+            per_score += point
+            aver_score = int(per_score / 9)   
+        line.append(str(per_score))
+        line.append(str(aver_score))
+        
+    listscr = sorted(listscr, key=lambda x:x[10],reverse=True)       
+    
+    
+#平均分数
+    total = 0
+    average_sta = 0
+    line_aver = []
+    for k in range(1,len(listscr[0])):
+        total = 0
+        for n in range(len(listscr)):
+            total += int(listscr[n][k])
+            average_sta = str(int(total/30))
+        line_aver.append(average_sta)  
+    listscr.insert(0,['0']+line_aver)
+    
+    
+    
+#不及格成绩显示为文字，添加名次
+    replace_list = list(str(m) for m in range(1, 60))
+    for x in range(len(listscr)):
+        for y in range(12):
+            score = listscr[x][y]
+            if score in replace_list:
+                listscr[x][y] = '不及格'
+    
+    number = -1
+    for line in listscr:
+        number += 1
+        numbers = str(number)  
+        line.insert(0,numbers)
+    #print(listscr)
+    
+    listscr[0][1] = '平均'
+    list_allline[0].insert(0,'名次')
+    listscr.insert(0,list_allline[0])
+    #print(listscr)  
+    
+    
+
+#保存至另一个文件    
+    for q in listscr:
+        q = str(q).strip('[').strip(']').replace(',','').replace('\'','')+'\n'  #将每个列表规范化城字符串
+
+        output = open(r'C:\coding\pythonlearning练手项目\result.txt', 'w', encoding = 'utf-8')
+        output.write(q)
+output.close()
+
