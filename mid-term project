@@ -58,9 +58,9 @@ with open(r'C:\report.txt', 'r+', encoding = 'utf-8') as f:
 
 #保存至另一个文件    
     for q in listscr:
-        q = str(q).strip('[').strip(']').replace(',','').replace('\'','')+'\n'  #将每个列表规范化城字符串
+        q = str(q).strip('[').strip(']').replace(',','').replace('\'','')+'\n'
 
-        output = open(r'C:\coding\pythonlearning练手项目\result.txt', 'w', encoding = 'utf-8')
+        output = open(r'C:\result.txt', 'w', encoding = 'utf-8')
         output.write(q)
 output.close()
 
