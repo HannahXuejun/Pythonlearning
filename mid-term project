@@ -63,4 +63,3 @@ with open(r'C:\report.txt', 'r+', encoding = 'utf-8') as f:
         output = open(r'C:\result.txt', 'w', encoding = 'utf-8')
         output.write(q)
 output.close()
-
