@@ -60,6 +60,6 @@ with open(r'C:\report.txt', 'r+', encoding = 'utf-8') as f:
     for q in listscr:
         q = str(q).strip('[').strip(']').replace(',','').replace('\'','')+'\n'
 
-        output = open(r'C:\result.txt', 'w', encoding = 'utf-8')
+        output = open(r'C:\result.txt', 'a', encoding = 'utf-8')
         output.write(q)
 output.close()
